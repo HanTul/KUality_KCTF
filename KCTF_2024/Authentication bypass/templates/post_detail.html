@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>KUality Board</title>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href=" {{ url_for('static', filename='css/post_detail.css') }}">
+</head>
+<body>
+    <header>
+        <div class="navbar">
+            <div class="logo" onclick="location.href='/'">KUality Board</div>
+            <div class="nav-links">
+                {% if user %}
+                    <button class="btn" onclick="location.href='/logout'">로그아웃</button>
+                    <button class="btn" onclick="location.href='/profile'">계정 정보</button>
+                {% else %}
+                    <button class="btn" onclick="location.href='/login'">로그인</button>
+                {% endif %}
+            </div>
+        </div>
+    </header>
+    <main>
+        <h1 class="center-title">게시판</h1>
+        <div class="post-container">
+            <div class="post-header">
+                <div class="title">
+                    {{ post.title }}
+                </div>
+                <div class="author">
+                    글쓴이 | {{ post.author }}
+                </div>
+            </div>
+            <div class="content">
+                {% if flag %}
+                    {{ flag }}
+                {% else %}
+                    <p>{{ post.content }}</p>
+                {% endif %}
+            </div>
+            <div class="back-button">
+                <a href="{{ url_for('board') }}">
+                    <button>목록으로 돌아가기</button>
+                </a>
+            </div>
+        </div>
+    </main>
+</body>
+</html>

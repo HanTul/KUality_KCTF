@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>KUality Board</title>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href=" {{ url_for('static', filename='css/profile.css') }}">
+</head>
+<body>
+    <header>
+        <div class="navbar">
+            <div class="logo" onclick="location.href='/'">KUality Board</div>
+            <div class="nav-links">
+                {% if user %}
+                    <button class="btn" onclick="location.href='/logout'">로그아웃</button>
+                    <button class="btn" onclick="location.href='/board'">게시판</button>
+                {% else %}
+                    <button class="btn" onclick="location.href='/login'">로그인</button>
+                {% endif %}
+            </div>
+        </div>
+    </header>
+    <main>
+        <div class="info-box">
+            <h2>계정 정보</h2>
+            <p><strong>아이디 : </strong> {{ username }}</p>
+            <p><strong>유저 권한 : </strong> {{ permission }}</p>
+            <br><hr>
+            {% if admin_check == 'N' or permission == 'user' %}
+                <div id="authentication">
+                    <h3>관리자 인증</h3>
+                    <form method="POST" action="/authentication">
+                        <input type="number" name="input_code">
+                        <input type="hidden" name="admin_check" value="{{ admin_check }}">
+                        <div class="button-group">
+                            <button type="submit" name="action" value="authentication">인증</button>
+                            <button type="submit" name="action" value="get_admin" style="background-color: rgb(0, 174, 255);">권한 얻기</button>
+                        </div>
+                    </form>
+                    {% if message != None %}
+                        <h3>{{ message }}</h3>
+                    {% endif %}
+                </div>
+            {% else %}
+                <h3 style="text-align: center;">관리자 인증이 완료되었습니다.</h3>
+            {% endif %}
+        </div>
+    </main>
+</body>
+</html>

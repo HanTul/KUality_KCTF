@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{{ post.title }}</title>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href=" {{ url_for('static', filename='css/post_detail.css') }}">
+    <style>
+        .post-container {
+            background-color: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            width: 800px;  /* 가로 크기 */
+            margin: auto;
+        }
+
+        .post-header {
+            display: grid;
+            grid-template-columns: 2fr 1fr; /* 제목과 글쓴이의 비율 */
+            padding: 10px;
+            margin-bottom: 20px;
+            border-bottom: 2px solid #ddd;
+        }
+
+        .title {
+            font-size: 1.5em;
+            text-align: left;
+            padding: 10px;
+            font-weight: bold;
+        }
+
+        .author {
+            text-align: right;
+            padding: 10px;
+            font-weight: bold;
+        }
+
+        .content {
+            text-align: left;
+            font-size: 1.2em;
+            padding: 20px;
+            margin: 20px 0;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            min-height: 200px;  /* 내용의 최소 높이 */
+        }
+
+        .back-button {
+            display: flex;
+            justify-content: flex-end;
+            padding: 10px 0;
+        }
+
+        .back-button button {
+            background-color: #832b2d;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        .back-button button:hover {
+            background-color: #a43e3f;
+        }
+    </style>
+    
+</head>
+<body>
+    <header>
+        <div class="navbar">
+            <div class="logo" onclick="location.href='/'">KUality Board</div>
+            <div class="nav-links">
+                {% if user %}
+                    <button class="btn" onclick="location.href='/logout'">로그아웃</button>
+                    <button class="btn" onclick="location.href='/profile'">계정 정보</button>
+                {% else %}
+                    <button class="btn" onclick="location.href='/login'">로그인</button>
+                {% endif %}
+            </div>
+        </div>
+    </header>
+    <main>
+        <h1 class="center-title">게시판</h1>
+        <div class="post-container">
+            <div class="post-header">
+                <div class="title">
+                    제목 | {{ post.title }}
+                </div>
+                <div class="author">
+                    글쓴이 | {{ post.author }}
+                </div>
+            </div>
+            <div class="content">
+                <p>{{ post.content }}</p>
+            </div>
+            <div class="back-button">
+                <a href="{{ url_for('board') }}">
+                    <button>목록으로 돌아가기</button>
+                </a>
+            </div>
+        </div>
+    </main>
+</body>
+</html>

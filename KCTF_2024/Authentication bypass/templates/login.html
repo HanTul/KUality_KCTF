@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>KUality Board</title>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href=" {{ url_for('static', filename='css/login.css') }}">
+</head>
+<body>
+    <header>
+        <div class="navbar">
+            <div class="logo" onclick="location.href='/'">KUality Board</div>
+            <div class="nav-links">
+                <button class="btn" onclick="location.href='/login'">로그인</button>
+            </div>
+        </div>
+    </header>
+    <div class="content">
+        <div class="login-container">
+            <h1>로그인</h1>
+            <form method="post" action="/login">
+                <input type="text" name="username" placeholder="아이디" required>
+                <input type="password" name="password" placeholder="비밀번호" required>
+                <button type="submit">로그인</button>
+            </form>
+            <button type="button" id="register" onclick="location.href='/register'">회원가입</button>
+        </div>
+    </div>
+
+
+</body>
+</html>

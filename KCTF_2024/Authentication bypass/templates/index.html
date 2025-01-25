@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>KUality Board</title>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href=" {{ url_for('static', filename='css/index.css') }}">
+</head>
+<body>
+    <header>
+        <div class="navbar">
+            <div class="logo" onclick="location.href='/'">KUality Board</div>
+            <div class="nav-links">
+                {% if user %}
+                    <button class="btn" onclick="location.href='/logout'">로그아웃</button>
+                    <button class="btn" onclick="location.href='/board'">게시판</button>
+                    <button class="btn" onclick="location.href='/profile'">계정 정보</button>
+                {% else %}
+                    <button class="btn" onclick="location.href='/login'">로그인</button>
+                {% endif %}
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <div class="content">
+            <img src="../static/images/logo.png" alt="KUality 로고" width="540px" height="465px">
+            {% if user %}
+                <h1>{{ user }}님!<br>KUality 게시판에 오신 것을 환영합니다!</h1> <br>
+                <button id="board_btn" onclick="location.href='/board'">게시판</button>
+            {% else %}
+                <h1>KUality 게시판에 오신 것을 환영합니다!</h1>
+            {% endif %}
+        </div>
+    </main>
+</body>
+</html>

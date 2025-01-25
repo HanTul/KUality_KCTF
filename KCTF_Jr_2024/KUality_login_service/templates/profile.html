@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>KUality SNS</title>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        body, html {
+            margin: 0;
+            padding: 0;
+            font-family: 'Noto Sans KR', sans-serif;
+            box-sizing: border-box;
+            background-color: #fff;
+            color: #000000;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+        }
+
+        header {
+            width: 100%;
+            background-color: #832b2d;
+            color: #fff;
+            border-bottom: 2px solid #fff;
+        }
+
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 30px;
+        }
+
+        .logo {
+            font-size: 1.5em;
+            cursor: pointer;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 15px;
+        }
+
+        .btn {
+            background-color: #eee;
+            color: black;
+            border: none;
+            padding: 10px 20px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        .btn:hover {
+            background-color: #777;
+        }
+
+        main {
+            flex: 1;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .info-box {
+            background-color: #f9f9f9;
+            padding: 40px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            text-align: left;
+            width: 400px;
+        }
+
+        .info-box h2 {
+            margin-top: 0;
+            color: #832b2d;
+            text-align: center;
+        }
+
+        .info-box p {
+            margin: 10px 0;
+            color: #333;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="navbar">
+            <div class="logo" onclick="location.href='/'">KUality SNS</div>
+            <div class="nav-links">
+                <button class="btn" onclick="location.href='/login'">로그인</button>
+                {% if user_id %}
+                    <button class="btn" onclick="location.href='/profile?user_id={{ user_id }}'">프로필</button>
+                {% endif %}
+            </div>
+        </div>
+    </header>
+    <main>
+        <div class="info-box">
+            <h2>사용자 프로필</h2>
+            <p><strong>ID: </strong> {{ user_id }}</p>
+            <p><strong>비밀번호: </strong> {{ pw }}</p>
+            <p><strong>이메일: </strong> {{ email }}</p>
+            <p><strong>직책: </strong> {{ position }}</p>
+        </div>
+    </main>
+</body>
+</html>

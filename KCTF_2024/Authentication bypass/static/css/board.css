@@ -1,0 +1,88 @@
+body, html {
+    margin: 0;
+    padding: 0;
+    font-family: 'Noto Sans KR', sans-serif;
+    box-sizing: border-box;
+    background-color: #fff; 
+    color: #000000;
+}
+header {
+    width: 100%;
+    background-color: #832b2d;
+    color: #fff;
+    border-bottom: 2px solid #fff;
+}
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 30px;
+}
+.logo {
+    font-size: 1.5em;
+}
+.nav-links {
+    display: flex;
+    gap: 15px;
+}
+.btn {
+    background-color: #eee;
+    color: black;
+    border: none;
+    border-radius: 5px;
+    padding: 10px 20px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    
+}
+.btn:hover {
+    background-color: #777;
+}
+
+.center-title {
+    text-align: center;
+}
+
+
+.posts-container {
+    background-color: white;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    width: 1000px;  /* 목록에 맞게 약간 넓게 설정 */
+    margin: auto;
+    text-align: center;
+}
+
+
+
+.post-header {
+    display: grid;
+    grid-template-columns: 1fr 3fr 1fr; /* 비율 조정 */
+    font-weight: bold;
+    padding: 10px 0;
+    border-bottom: 2px solid #ddd;
+    text-align: center;
+}
+
+
+
+/* 게시글 목록 스타일 */
+.post-card {
+    display: grid;
+    grid-template-columns: 1fr 3fr 1fr; /* 비율 조정 */
+    padding: 10px 0;
+    border-bottom: 1px solid #eee;
+    align-items: center;
+    text-align: center;
+}
+
+.post-card span a {
+    color: #832b2d;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.post-card span a:hover {
+    text-decoration: underline;
+}

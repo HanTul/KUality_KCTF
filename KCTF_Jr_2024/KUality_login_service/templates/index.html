@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>KUality SNS</title>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        body, html {
+            margin: 0;
+            padding: 0;
+            font-family: 'Noto Sans KR', sans-serif;
+            box-sizing: border-box;
+            background-color: #fff; /* 상단바 색상과 동일하게 설정 */
+            color: #000000;
+        }
+        header {
+            width: 100%;
+            background-color: #832b2d;
+            color: #fff;
+            border-bottom: 2px solid #fff;
+        }
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 30px;
+        }
+        .logo {
+            font-size: 1.5em;
+        }
+        .nav-links {
+            display: flex;
+            gap: 15px;
+        }
+        .btn {
+            background-color: #eee;
+            color: black;
+            border: none;
+            padding: 10px 20px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        .btn:hover {
+            background-color: #777;
+        }
+        main {
+            padding: 50px;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="navbar">
+            <div class="logo" onclick="location.href='/'">KUality SNS</div>
+            <div class="nav-links">
+                <button class="btn" onclick="location.href='/login'">로그인</button>
+                {% if user_id %}
+                    <button class="btn" onclick="location.href='/profile?user_id={{ user_id }}'">프로필</button>
+                {% endif %}
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <div class="content">
+            {% if user_id %}
+                <h1>{{ user_id }}님!<br>KUality SNS에 오신 것을 환영합니다!</h1>
+            {% else %}
+                <h1>KUality SNS에 오신 것을 환영합니다!</h1>
+            {% endif %}
+            <img src="static/images/logo.png" alt="KUality 로고" width="540px" height="465px">
+        </div>
+    </main>
+</body>
+</html>
